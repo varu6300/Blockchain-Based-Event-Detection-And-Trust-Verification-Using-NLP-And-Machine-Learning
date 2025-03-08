@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Event Detection & Trust Verification</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+<script language="javascript">
+	function validate(formObj)
+	{
+	if(formObj.t1.value.length==0)
+	{
+	alert("Please Enter Event Post");
+	formObj.t1.focus();
+	return false;
+	}
+	
+	return true;
+	}
+	</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Blockchain-Based Event Detection and Trust Verification Using Natural Language Processing & Machine Learning </font></center>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+			<li class="first current_page_item"><a href="{% url 'TrainML' %}"><font size="" color="yellow">Train ML & DL Algorithms</font></a></li>
+
+			<li class="first current_page_item"><a href="{% url 'Graph' %}"><font size="" color="yellow">Comparison Graph</font></a></li>
+
+			<li class="first current_page_item"><a href="{% url 'Predict' %}"><font size="" color="yellow">Blockchain Based Event Detection</font></a></li>		
+			
+			<li class="first current_page_item"><a href="{% url 'ViewTweets' %}"><font size="" color="yellow">View Tweets</font></a></li>
+		
+		<li class="first current_page_item"><a href="{% url 'index' %}"><font size="" color="yellow">Logout</font></a></li>
+		</center></ul>	<br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'PredictAction' %} onsubmit="return validate(this);">
+<br/>{% csrf_token %}<br/>
+   <h5><b>Post Tweet Screen</b></h5>
+   
+   <font size="" color="red"><center>{{ data|safe }}</center></font>
+
+				
+						<table align="center" width="40" >
+			 <tr><td><font size="" color="black">Post&nbsp;Tweets</b></td><td><input type="text" name="t1" style="font-family: Comic Sans MS" size="50"/></td></tr>
+         
+		            
+			<tr><td></td><td><input type="submit" value="Submit">
+
+			</td>
+			</tr>
+			</table>
+				</div>	
+					
+				</div>
+				<br/><br/>
+	</body>
+</html>
